@@ -7,6 +7,7 @@ class ext_load(commands.Cog):
 		self.load_cogs()
 
 	def load_cogs(self):
+		print("\033[94mThe bot is ready!\033[0m")
 		for path, subdirs, files in os.walk("extensions"):
 			for name in files:
 				if name.endswith(".py"):
@@ -15,9 +16,9 @@ class ext_load(commands.Cog):
 					cog = path + "." + name
 					try:
 						self.bot.load_extension(cog)
-						print(cog + " was loaded!")
+						print("\033[92mLoaded:\033[0m " + cog)
 					except Exception as e:
-						print(e)
+						print("\033[91mError:\033[0m " + str(e))
 				else:
 					continue
 
